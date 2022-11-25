@@ -11,7 +11,9 @@ class Scheduler:
 class Hourly (Scheduler):
     def timeOfInterval(self, dt)       : return 60*dt.minute + dt.second
     def isNewInterval(self, last, now) : return last.hour != now.hour 
+    def getTimerSleepTime(self)        : return 60 # 1 min
 
 class Daily (Scheduler):
     def timeOfInterval(self, dt)       : return 60*dt.hour + dt.minute
     def isNewInterval(self, last, now) : return last.day != now.day 
+    def getTimerSleepTime(self)        : return 900 # 15 min

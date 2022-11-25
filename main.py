@@ -10,7 +10,7 @@ print("============ image-capturer =============")
 last = None
 
 def loadConfig():
-    f = open('image-capturer-config.json')  # Opening JSON file
+    f = open('/etc/image-capturer-config.json')  # Opening JSON file
     config = json.load(f) # returns JSON object as a dictionary
     f.close() # Closing file
     #print(config)
@@ -56,10 +56,14 @@ def onTimer():
 
     if checkSchedule(scheduler, times, now) : 
         doAction()
+    
+    # rerurn the next sleep time
+    return scheduler.getTimerSleepTime()
 
 # THE LOOP
 while True:
-    onTimer()
-    time.sleep(60)
+    sleeptime = onTimer()
+    print('next sleep time',sleeptime)
+    time.sleep(sleeptime)
 
 #onTimer()
