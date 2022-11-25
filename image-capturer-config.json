@@ -2,5 +2,13 @@
     "schedule":{
         "periodicity":"hourly",
         "times":["48:00", "51:30", "55:25"]
-    }
+    },
+
+    "sources":[
+        {"url":"https://youtu.be/qr51Es25qCY", "dir":"lakhta"}
+    ],
+
+    "destination":"/home/igor/images"
+
+
 }

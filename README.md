@@ -6,7 +6,8 @@ Installation
     > git clone git@github.com:igormayachenkov/image-capturer.git
 - install python modules
     > apt install python3-pip  
-    apt install python3-opencv
+    apt install python3-opencv 
+    pip install cap_from_youtube
 - copy the configuration file to `/etc` dir and correct it according to you tasks
     > cd image-capturer   
     cp image-capturer-config.json /etc   
@@ -20,4 +21,6 @@ Configuration file format
 | :---------------          |:-----------------------------------------------------------   |
 | `schedule`                | periodic work settings.                                       |
 |   `.periodicity`          | "daily" or "hourly"                                           |
-|   `.times`                | times during the loop ("hh:mm" for daily, "mm:ss" for hourly)|
+|   `.times`                | times during the loop ("hh:mm" for daily, "mm:ss" for hourly) |
+| `sources`                 | list of sources {url, dir}                                    |
+| `destination`             | the output dir                                                |
