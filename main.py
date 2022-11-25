@@ -50,8 +50,8 @@ def onTimer():
         if scheduler.isNewInterval(last,now) :
             last = None  
 
-    if checkSchedule(scheduler, times, now) : 
-    #if True : 
+    #if checkSchedule(scheduler, times, now) : 
+    if True : 
         last = now
         try:
             doAction(config)
