@@ -1,17 +1,35 @@
 import os
 import cv2
+import pafy  #documentation: https://pypi.org/project/pafy/
+import datetime
 
 def processSource(src, dst):
     print("process:", src)
 
-    # VERIFY/CREATE dir
+    # VERIFY/CREATE output dir
     output = dst+"/"+src["dir"]
-    print("output:", output)
     if not os.path.exists(output) :
         os.mkdir(output)
-        print("dir created:", output)
+        print("created:", output)
 
+    # CAPTURE IMAGE
+    url = src["url"]
+    #url = 'https://youtu.be/LXb3EKWsInQ' #Costa Rica - doesn't work!
+    video = pafy.new(url)
+    print("title  :", video.title)
+    best  = video.getbest()
+    print("video  :", best.resolution, best.extension)
+    #print("best.url !!!:", best.url) #https://manifest.googlevideo.com/api/manifest/....
+    capture = cv2.VideoCapture(best.url) #cv2.VideoCapture object
+    result, frame = capture.read()
+    print ("result :",result)
+    capture.release()
 
+    # SAVE IMAGE
+    if result :
+        output = output+"/"+datetime.datetime.now().strftime("%y%m%d-%H%M%S.jpg")
+        cv2.imwrite(output, frame)
+        print("output :", output)
 
 def doAction(config):
     sources     = config["sources"]

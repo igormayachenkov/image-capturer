@@ -7,7 +7,11 @@ Installation
 - install python modules
     > apt install python3-pip  
     apt install python3-opencv 
-    pip install cap_from_youtube
+    pip install pafy
+    sudo pip install --upgrade youtube_dl
+- fix the pafy bug https://github.com/mps-youtube/pafy/issues/287
+    > nano /home/igor/.local/lib/python3.10/site-packages/pafy/backend_youtube_dl.py   
+    comment like_count, dislike_count
 - copy the configuration file to `/etc` dir and correct it according to you tasks
     > cd image-capturer   
     cp image-capturer-config.json /etc   
