@@ -10,6 +10,7 @@ def processSource(src, dst):
     output = dst+"/"+src["dir"]
     if not os.path.exists(output) :
         os.mkdir(output)
+        os.chmod(output,777) #to allow remove files by ftp
         print("created:", output)
 
     # CAPTURE IMAGE
